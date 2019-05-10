@@ -1,0 +1,89 @@
+body{
+    background-color: rgb(121, 45, 45);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.6em;
+    margin: 0%;
+    
+}
+
+.body-1 {
+    width: 1000px;
+    margin: 0 auto;
+}
+.title-1{ 
+    background-image: url("img/r&b.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding: 50px;
+    margin-top: 25px;
+text-align: left;
+margin-left: auto;
+margin-right: auto;
+
+}
+.nav-1
+{  
+    width: 1000px;
+
+    margin-left: auto;
+margin-right: auto;
+}
+.nav-1 ul li{
+display: inline;
+
+
+}
+.nav-1 ul{
+    padding: 20px;
+   
+    background-color: rgb(102, 0, 0);
+   text-align: center;
+}
+.nav-1 ul a{
+    text-decoration: none;
+}
+.box-1{
+    margin: 10px;
+    padding: 10px;
+    float: right;
+    width: 650PX;
+}
+
+.sev-1{
+    margin: 10px;
+    padding: 10px;
+    float: right;
+    width: 300px;
+}
+
+.sub{
+    margin: 10px;
+    padding: 10px;
+    float: right;
+    width: 300px;
+}
+.menu-1{
+    
+   
+    width: 20%;
+    
+}
+
+.blo{
+    margin: 10px;
+    padding: 10px;
+    width: 250px;
+   
+}
+.con-1{
+    
+   
+    width: 300px;
+}
+.cr{
+    width: 900px;
+    
+    text-align: center;
+}
