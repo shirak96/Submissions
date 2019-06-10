@@ -120,7 +120,7 @@ function hello(x){
  * @returns {void}
  */
 function help(){
-  console.log('possible commands are hello, hello "random name", exit, & quit ')
+  console.log('possible commands are hello, hello "random name", remove, remove1, remove2, exit, & quit ')
 }
 
 function remove(){
