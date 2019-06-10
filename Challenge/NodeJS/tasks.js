@@ -34,6 +34,12 @@ function startApp(name){
  * @returns {void}
  */
 
+tasks = [
+  'task 1',
+  'task 2',
+  'task 3'
+]
+
 function onDataReceived(text)
 {
   text= text.replace('\n','').trim();
@@ -52,6 +58,10 @@ function onDataReceived(text)
   }
   else if(commands[0] === 'help'){
       help();
+  }
+
+  else if(commands[0] === 'list'){
+    list();
   }
   else{
     unknownCommand(commands[0]);
@@ -106,6 +116,14 @@ function quit(){
 function exit(){
   console.log('Exiting now, goodbye!')
   process.exit();
+}
+
+function list(){
+
+  for(var i = 0; i < tasks.length; i++)
+  {
+  console.log((i+1)+ " " +tasks[i])
+  }
 }
 
 // The following line starts the application
