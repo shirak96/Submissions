@@ -46,6 +46,7 @@ function onDataReceived(text)
   var commands = text.split(" ");
   //console.log(commands[1]);
  // console.log("THis is me:"+text)
+ //console.log(commands)
   if( commands[0]=== 'hello'){
     hello( commands[1]);
   }
@@ -56,7 +57,7 @@ function onDataReceived(text)
   else if(commands[0] === 'exit'){
     exit();
   }
-  else if(commands[0] === 'help'){
+  else if(commands[0] === 'help'){commands
       help();
   }
 
@@ -75,13 +76,13 @@ function onDataReceived(text)
   }
 
   else if  (commands[0] === 'remove') {
-    remove();}
+    remove(commands);}
 
-  else if  (commands[0] === 'remove1') {
-    remove1();}
+  // else if  (commands[0] === 'remove1') {
+  //   remove1();}
 
-  else if  (commands[0] === 'remove2') {
-      remove2();}  
+  // else if  (commands[0] === 'remove2') {
+  //     remove2();}  
     
   
       else{
@@ -123,17 +124,28 @@ function help(){
   console.log('possible commands are hello, hello "random name", remove, remove1, remove2, exit, & quit ')
 }
 
-function remove(){
- tasks.pop()
+function remove(e){
+  var n = e[1];
+  //console.log(n)
+  if (e.length==1){
+    tasks.pop()
+  }
+  else if (n<tasks.length){
+    tasks.splice(n-1,1)
+  }
+  else{
+    console.log('this number dose not exist')
+  }
+ 
 }
 
-function remove1(){
-  tasks.shift()
- }
+// function remove1(){
+//   tasks.shift()
+//  }
 
- function remove2(){
-  tasks.splice(1, 1)
- }
+//  function remove2(){
+//   tasks.splice(1, 1)
+//  }
 
 /**
  * Exits the application
