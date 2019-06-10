@@ -73,7 +73,18 @@ function onDataReceived(text)
     }
     tasks.push(myString)
   }
-  else{
+
+  else if  (commands[0] === 'remove') {
+    remove();}
+
+  else if  (commands[0] === 'remove1') {
+    remove1();}
+
+  else if  (commands[0] === 'remove2') {
+      remove2();}  
+    
+  
+      else{
     unknownCommand(commands[0]);
   }
 }
@@ -112,6 +123,17 @@ function help(){
   console.log('possible commands are hello, hello "random name", exit, & quit ')
 }
 
+function remove(){
+ tasks.pop()
+}
+
+function remove1(){
+  tasks.shift()
+ }
+
+ function remove2(){
+  tasks.splice(1, 1)
+ }
 
 /**
  * Exits the application
