@@ -63,6 +63,16 @@ function onDataReceived(text)
   else if(commands[0] === 'list'){
     list();
   }
+  else if(commands[0] === 'add\n'){
+    console.log("error")
+  }
+  else if(commands[0] === 'add' && commands.length >1 ){
+    var myString = "";
+    for(let i = 1; i < commands.length; i++){
+      myString += commands[i] + " ";
+    }
+    tasks.push(myString)
+  }
   else{
     unknownCommand(commands[0]);
   }
@@ -124,6 +134,7 @@ function list(){
   {
   console.log((i+1)+ " " +tasks[i])
   }
+
 }
 
 // The following line starts the application
