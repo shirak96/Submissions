@@ -1,4 +1,4 @@
-var express = require('express'); 
+var express = require('express');
 var app = express();
 
 
@@ -8,47 +8,47 @@ app.get('/', function (req, res) {
 })
 app.get('/test', function (req, res) {
     res.status(200).send({
-        status:200, 
-        message:"ok"
+        status: 200,
+        message: "ok"
     })
 });
 
 app.get('/time', function (req, res) {
     var today = new Date();
-var time = today.getHours() + ":" + today.getSeconds();
+    var time = today.getHours() + ":" + today.getSeconds();
     res.status(200).send({
-        status:200, 
-        message:time
+        status: 200,
+        message: time
     })
 });
 
 app.get('/hello', function (req, res) {
     res.status(200).send({
-        status:200, 
-        message:"Hello"
+        status: 200,
+        message: "Hello"
     })
 });
 
 app.get('/hello/:ID', function (req, res) {
     res.status(200).send({
-        status:200, 
-        message:"Hello,"+req.params.ID
+        status: 200,
+        message: "Hello," + req.params.ID
     })
 });
 
 app.get('/search', function (req, res) {
-   if(req.query.s)
-    res.status(200).send({
-        status:200, 
-        message:"ok",
-        data:req.query.s
-    })
-else
-    res.status(500).send({
-        status:500, 
-        error:true, 
-        message:"you have to provide a search"
-    })
+    if (req.query.s)
+        res.status(200).send({
+            status: 200,
+            message: "ok",
+            data: req.query.s
+        })
+    else
+        res.status(500).send({
+            status: 500,
+            error: true,
+            message: "you have to provide a search"
+        })
 });
 
 const movies = [
@@ -61,55 +61,70 @@ const movies = [
 
 app.get('/movies/create', function (req, res) {
     res.status(200).send({
-        status:200, 
-        message:"cre"
+        status: 200,
+        message: "cre"
     })
 });
 
 
 app.get('/movies/read/by-date', function (req, res) {
     res.status(200).send({
-        status:200, 
-        data:movies.sort(function(a,b){
+        status: 200,
+        data: movies.sort(function (a, b) {
 
             return (b.year) - (a.year);
-          })
+        })
     })
 });
 
 app.get('/movies/read/by-rating', function (req, res) {
     res.status(200).send({
-        status:200, 
-        data:movies.sort(function(a,b){
+        status: 200,
+        data: movies.sort(function (a, b) {
 
             return (b.rating) - (a.rating);
-          })
+        })
     })
 });
 
 app.get('/movies/read/by-title', function (req, res) {
     res.status(200).send({
-        status:200, 
-        data:movies.sort(function(a,b){
+        status: 200,
+        data: movies.sort(function (a, b) {
             return a.title.localeCompare(b.title);
         })
-          })
-    });
+    })
+});
+app.get('/movies/read/id/:ID', function (req, res) {
+    if (movies[req.params.ID - 1])
+        res.status(200).send({
+            status: 200,
+            data: movies[req.params.ID - 1]
+        })
+    else
+        res.status(404).send({
+            status: 404,
+            error: true,
+            message: "the movie " + req.params.ID + " does not exist"
+        })
+});
 
 
 app.get('/movies/update', function (req, res) {
     res.status(200).send({
-        status:200, 
-        message:"upd"
+        status: 200,
+        message: "upd"
     })
 });
 
 app.get('/movies/delete', function (req, res) {
     res.status(200).send({
-        status:200, 
-        message:"del"
+        status: 200,
+        message: "del"
     })
 });
+
+
 
 
 
