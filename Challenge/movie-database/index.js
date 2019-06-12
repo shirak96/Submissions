@@ -20,4 +20,34 @@ var time = today.getHours() + ":" + today.getSeconds();
         message:time
     })
 });
+
+app.get('/hello', function (req, res) {
+    res.status(200).send({
+        status:200, 
+        message:"Hello"
+    })
+});
+
+app.get('/hello/:ID', function (req, res) {
+    res.status(200).send({
+        status:200, 
+        message:"Hello,"+req.params.ID
+    })
+});
+
+app.get('/search', function (req, res) {
+   if(req.query.s)
+    res.status(200).send({
+        status:200, 
+        message:"ok",
+        data:req.query.s
+    })
+else
+    res.status(500).send({
+        status:500, 
+        error:true, 
+        message:"you have to provide a search"
+    })
+});
+
 app.listen(3000)
