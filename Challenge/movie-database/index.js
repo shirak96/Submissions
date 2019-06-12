@@ -1,5 +1,3 @@
-
-
 var express = require('express'); 
 var app = express();
 
@@ -68,12 +66,36 @@ app.get('/movies/create', function (req, res) {
     })
 });
 
-app.get('/movies/read', function (req, res) {
+
+app.get('/movies/read/by-date', function (req, res) {
     res.status(200).send({
         status:200, 
-        data:movies
+        data:movies.sort(function(a,b){
+
+            return (b.year) - (a.year);
+          })
     })
 });
+
+app.get('/movies/read/by-rating', function (req, res) {
+    res.status(200).send({
+        status:200, 
+        data:movies.sort(function(a,b){
+
+            return (b.rating) - (a.rating);
+          })
+    })
+});
+
+app.get('/movies/read/by-title', function (req, res) {
+    res.status(200).send({
+        status:200, 
+        data:movies.sort(function(a,b){
+            return a.title.localeCompare(b.title);
+        })
+          })
+    });
+
 
 app.get('/movies/update', function (req, res) {
     res.status(200).send({
