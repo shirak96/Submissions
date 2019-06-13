@@ -141,15 +141,18 @@ app.get('/movies/update', function (req, res) {
     })
 });
 
-app.get('/movies/delete', function (req, res) {
-    res.status(200).send({
-        status: 200,
-        message: "del"
-    })
+app.get('/movies/delete/:ID', function (req, res) {
+  if(movies[req.params.ID - 1]){
+      movies.splice(req.params.ID - 1,1)
+          res.send(movies);
+   }
+   
+else 
+res.status(404).send({
+ status: 404,
+ error: true,
+ message: "the movie " + req.params.ID + " does not exist"
 });
-
-
-
-
+});
 
 app.listen(3000)
