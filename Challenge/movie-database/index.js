@@ -134,11 +134,20 @@ app.get('/movies/read/id/:ID', function (req, res) {
 });
 
 
-app.get('/movies/update', function (req, res) {
-    res.status(200).send({
-        status: 200,
-        message: "upd"
-    })
+app.get('/movies/update/:ID?', function (req, res) {
+   function updated(a, b){
+       if (a !== undefined || a=== ""){
+           movies[req.params.ID][b] = a
+       }
+   }
+    if (req.params.ID < movies.length){
+        updated(req.query.title, "title");
+        updated(parseInt(req.query.rating), "rating");
+        updated(parseFloat(req.query.year), "year");
+        res.send({status:200, data: movies})
+
+    }
+
 });
 
 app.get('/movies/delete/:ID', function (req, res) {
