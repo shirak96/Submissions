@@ -58,14 +58,38 @@ const movies = [
     { title: 'الإرهاب والكباب‎', year: 1992, rating: 6.2 }
 ]
 
+ 
+app.get('/movies/add', function (req, res) {
+   var title =   req.query.title
+    var year  =  req.query.year
+    var rating =   req.query.rating
+    if((!title || !year) || year.length !=4 || isNaN(year) )
+    {
+        res.status(403).send({
+            status: 403,
+            error: true,
+            message: "you cannot create a movie without providing a title and a year"
+        });
+    }
 
-app.get('/movies/create', function (req, res) {
+
+   else{
+    x = rating ? rating : 4
+    movies.push({title, year:parseInt(year),  rating:parseFloat(x)});
     res.status(200).send({
         status: 200,
-        message: "cre"
+        data:movies
     })
+   }
+    
 });
 
+app.get('/movies/read', function (req, res) {
+    res.status(200).send({
+        status: 200,
+        data:movies
+    })
+});
 
 app.get('/movies/read/by-date', function (req, res) {
     res.status(200).send({
